@@ -122,5 +122,4 @@ dist
 #other 
 strapiql/node_modules
 strapiql/config/database.js
-
 reactts/node_modules
