@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 import Main from "./pages/Main";
 import Login from "./pages/Login";
 
-const isAuth = true;
+const isAuth = false;
 
 const PrivateRoute: FC<{ path: string; exact: boolean }> = ({
   children,

@@ -1,0 +1,21 @@
+$image: 'https://images.pexels.com/photos/1029612/pexels-photo-1029612.jpeg';
+
+.login {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: url($image);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    content: '';
+    background: rgba(28, 26, 26, 0.25);
+  }
+}
+

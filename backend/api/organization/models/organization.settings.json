@@ -21,14 +21,12 @@
     },
     "users": {
       "plugin": "users-permissions",
-      "collection": "user"
+      "collection": "user",
+      "via": "organizations",
+      "dominant": true
     },
     "teams": {
       "collection": "team"
-    },
-    "team": {
-      "via": "organization",
-      "model": "team"
     }
   }
 }

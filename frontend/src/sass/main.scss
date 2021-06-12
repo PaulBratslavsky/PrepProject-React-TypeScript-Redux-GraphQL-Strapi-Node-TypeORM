@@ -1,6 +1,3 @@
+@import "./custombootstrap.scss";
 @import "~bootstrap/scss/bootstrap";
-
-body {
-  background: orange;
-  color: black;
-}
+@import './login.scss';

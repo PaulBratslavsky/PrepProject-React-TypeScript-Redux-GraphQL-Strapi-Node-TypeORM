@@ -1,18 +1,13 @@
-import { useState } from "react";
-import { Redirect } from "react-router";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
+
+import LoginForm from "../components/LoginForm/LoginForm";
 
 export default function Login() {
-  const [redirect, setRedirect] = useState(false);
-
-  if (redirect) return <Redirect to="/" />;
 
   return (
-    <Row>
-      <Col>
-        <Button variant="primary" onClick={() => setRedirect(true)}>
-          Login
-        </Button>
+    <Row className="login">
+      <Col xl={4} md={5} sm={8}>
+        <LoginForm />
       </Col>
     </Row>
   );

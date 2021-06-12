@@ -61,6 +61,10 @@
     },
     "organization": {
       "model": "organization"
+    },
+    "organizations": {
+      "via": "users",
+      "collection": "organization"
     }
   }
 }
