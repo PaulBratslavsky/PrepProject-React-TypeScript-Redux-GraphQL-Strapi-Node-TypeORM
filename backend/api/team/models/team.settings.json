@@ -22,10 +22,6 @@
     "users": {
       "plugin": "users-permissions",
       "collection": "user"
-    },
-    "organization": {
-      "model": "organization",
-      "via": "team"
     }
   }
 }
