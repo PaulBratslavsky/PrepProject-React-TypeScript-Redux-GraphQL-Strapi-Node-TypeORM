@@ -1,4 +1,6 @@
 import { useHistory } from "react-router";
+import { useDispatch } from 'react-redux';
+import { loginUser } from "../../redux/slice/userSlice";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
 import styles from "./login-form.module.scss";
@@ -10,9 +12,11 @@ interface IFormInput {
 
 export default function LoginForm() {
   const history = useHistory();
+  const dispatch = useDispatch();
   const { control, register, reset, formState: { errors }, handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data, event) => {
     console.log(data, "message");
+    dispatch(loginUser({user: data, token: "435h23j5h234kj5h"}))
     reset({username: '', password: ''}); 
     history.push('/')
   };
