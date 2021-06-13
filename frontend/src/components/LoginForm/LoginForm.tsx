@@ -1,9 +1,22 @@
-import { useHistory } from "react-router";
+import { useEffect } from 'react';
+import { Redirect } from 'react-router';
+import { gql, useMutation } from "@apollo/client";
 import { useDispatch } from 'react-redux';
 import { loginUser } from "../../redux/slice/userSlice";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
 import styles from "./login-form.module.scss";
+
+const LOGIN_USER = gql`
+  mutation loginMutation($input: UsersPermissionsLoginInput!) {
+    login(input: $input) {
+      jwt
+      user {
+        username
+      }
+    }
+  }
+`;
 
 interface IFormInput {
   username: string;
@@ -11,17 +24,31 @@ interface IFormInput {
 }
 
 export default function LoginForm() {
-  const history = useHistory();
   const dispatch = useDispatch();
+  const [loginMutation, { data, error, loading }] = useMutation(LOGIN_USER);
+  
+  useEffect(() => {
+    if (data) {
+      dispatch(loginUser({user: data.login.user, token: data.login.jwt}))
+    }
+  },[data, dispatch])
+
   const { control, register, reset, formState: { errors }, handleSubmit } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data, event) => {
-    console.log(data, "message");
-    dispatch(loginUser({user: data, token: "435h23j5h234kj5h"}))
+
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    loginMutation({
+      variables: {
+        input: {
+          identifier: data.username,
+          password: data.password,
+        },
+      },
+    });
     reset({username: '', password: ''}); 
-    history.push('/')
   };
 
-  console.log(errors, "error")
+  if (loading) return <p>...loading</p>
+  if (data) return <Redirect to="/" />
 
   return (
     <Form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
@@ -70,6 +97,8 @@ export default function LoginForm() {
       <Button variant="primary" type="submit">
         Login
       </Button>
+      {error && <h4>Server Error: {error?.message}</h4>}
     </Form>
   );
 }
+

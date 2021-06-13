@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ApolloProvider } from "@apollo/client";
+import { client } from './apollo/index'
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import "./sass/main.scss";
@@ -9,11 +11,13 @@ import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
+    <ApolloProvider client={client}>
     <Provider store={store}>
       <Router>
         <App />
       </Router>
     </Provider>
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
