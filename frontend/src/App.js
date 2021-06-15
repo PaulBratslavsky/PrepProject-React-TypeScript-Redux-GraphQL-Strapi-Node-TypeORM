@@ -1,4 +1,3 @@
-// import { FC } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import Main from "./pages/Main";
@@ -6,7 +5,6 @@ import Login from "./pages/Login";
 
 import { useSelector } from "react-redux";
 
-// : FC<{ path: string; exact: boolean }>
 const PrivateRoute = ({ 
   user,
   children,
