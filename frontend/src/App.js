@@ -1,6 +1,5 @@
 // import { FC } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { Container } from "react-bootstrap";
 
 import Main from "./pages/Main";
 import Login from "./pages/Login";
@@ -25,7 +24,6 @@ function App() {
   console.log(user, token, "FROM STORE")
 return (
     <div className="app">
-      <Container fluid>
         <Switch>
           <Route path="/login">
             <Login />
@@ -34,7 +32,6 @@ return (
             <Main />
           </PrivateRoute>
         </Switch>
-      </Container>
     </div>
   );
 }
