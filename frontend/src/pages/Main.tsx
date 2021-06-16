@@ -7,10 +7,9 @@ export default function Main() {
     <React.Fragment>
       <MainNav />
       <Container fluid>
-      <Row className="main">
+      <Row className="main bg-dark">
         <Col lg={2}>1 of 1</Col>
-        <Col lg={3}>1 of 2</Col>
-        <Col lg={7}>1 of 3</Col>
+        <Col lg={10}>1 of 2</Col>
       </Row>
       </Container>
     </React.Fragment>
