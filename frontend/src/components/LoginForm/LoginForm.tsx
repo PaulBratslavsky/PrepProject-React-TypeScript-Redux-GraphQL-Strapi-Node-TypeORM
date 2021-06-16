@@ -94,10 +94,12 @@ export default function LoginForm() {
           Please provide a valid password.
         </Form.Control.Feedback>
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Form.Row className="mx-0">
+      <Button className="ml-auto" variant="primary" type="submit">
         Login
       </Button>
       {error && <h4>Server Error: {error?.message}</h4>}
+      </Form.Row>
     </Form>
   );
 }

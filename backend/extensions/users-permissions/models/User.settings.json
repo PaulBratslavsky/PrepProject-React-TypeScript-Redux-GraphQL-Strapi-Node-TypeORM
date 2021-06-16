@@ -59,12 +59,25 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "organization": {
-      "model": "organization"
-    },
     "organizations": {
       "via": "users",
       "collection": "organization"
+    },
+    "avatar": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
     }
   }
 }
