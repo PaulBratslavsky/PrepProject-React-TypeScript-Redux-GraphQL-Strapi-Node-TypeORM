@@ -8,11 +8,12 @@ import { Form, Button } from "react-bootstrap";
 import styles from "./login-form.module.scss";
 
 const LOGIN_USER = gql`
-  mutation loginMutation($input: UsersPermissionsLoginInput!) {
+  mutation LoginMutation($input: UsersPermissionsLoginInput!) {
     login(input: $input) {
       jwt
       user {
         username
+        id
       }
     }
   }
@@ -25,18 +26,19 @@ interface IFormInput {
 
 export default function LoginForm() {
   const dispatch = useDispatch();
-  const [loginMutation, { data, error, loading }] = useMutation(LOGIN_USER);
+  const [LoginMutation, { data, error, loading }] = useMutation(LOGIN_USER);
   
   useEffect(() => {
     if (data) {
-      dispatch(loginUser({user: data.login.user, token: data.login.jwt}))
+      dispatch(loginUser({ user: data.login.user }))
+      window.localStorage.setItem("token", data.login.jwt)
     }
   },[data, dispatch])
 
   const { control, register, reset, formState: { errors }, handleSubmit } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    loginMutation({
+    LoginMutation({
       variables: {
         input: {
           identifier: data.username,
