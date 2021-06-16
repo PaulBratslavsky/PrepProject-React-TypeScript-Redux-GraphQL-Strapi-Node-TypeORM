@@ -18,8 +18,8 @@ const PrivateRoute = ({
 
 function App() {
   const auth = useSelector((state) => state)
-  const { user, token } = auth.user;
-  console.log(user, token, "FROM STORE")
+  const { user } = auth.user;
+  console.log(user, "FROM STORE")
 return (
     <div className="app">
         <Switch>
