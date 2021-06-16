@@ -6,7 +6,7 @@ export default function MainNav() {
   const dispatch = useDispatch();
 
   return (
-    <Navbar bg="light" variant="light">
+    <Navbar bg="light" variant="light" sticky="top" >
       <Navbar.Brand href="#home">Navbar</Navbar.Brand>
       <Nav className="mr-auto"></Nav>
       <Button onClick={() => dispatch(logoutUser())} variant="primary">
