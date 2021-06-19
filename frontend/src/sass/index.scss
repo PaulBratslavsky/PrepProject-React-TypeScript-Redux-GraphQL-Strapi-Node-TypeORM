@@ -1,4 +1,9 @@
 @import "./custombootstrap.scss";
 @import "~bootstrap/scss/bootstrap";
-@import './login.scss';
-@import './main.scss';
+@import "./login.scss";
+@import "./main.scss";
+@import "./colors.scss";
+
+body {
+  color: white;
+}

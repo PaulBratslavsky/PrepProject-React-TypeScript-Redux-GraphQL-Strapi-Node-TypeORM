@@ -8,12 +8,11 @@ import {
 
 const cache = new InMemoryCache();
 const defaultOptions = { mutate: { errorPolicy: "all" } };
-
 const httpLink = new HttpLink({ uri: 'http://localhost:1337/graphql' })
 
 
 const authMiddleware = new ApolloLink((operation, forward) => {
-  operation.setContext(({_, headers = {} }) => {
+  operation.setContext(({headers = {} }) => {
     const accessToken = operation.operationName !== "LoginMutation" ? localStorage.getItem("token") : null
     return {
       headers: {
@@ -23,7 +22,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
     };
   });
 
-  return forward(operation, "fatter DECk");
+  return forward(operation);
 });
 
 export const client = new ApolloClient({

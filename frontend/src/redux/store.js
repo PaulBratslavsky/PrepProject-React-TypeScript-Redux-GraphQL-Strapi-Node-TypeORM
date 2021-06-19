@@ -1,16 +1,8 @@
-import {combineReducers} from "redux"; 
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import storage from 'redux-persist/lib/storage'
-
-import {
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-  persistReducer,
-} from "redux-persist";
+import { combineReducers } from "redux";
+import throttle from "lodash/throttle";
+import { configureStore }  from "@reduxjs/toolkit";
+import { loadPersistedState, savePersistedState } from "../helpers/persist";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 import userReducer from "./slice/userSlice";
 
@@ -18,18 +10,24 @@ const reducers = combineReducers({
   user: userReducer,
 });
 
-const persistConfig = {
-  key: 'root',
-  storage
-};
+const persistedState = loadPersistedState();
 
-const persistedReducer = persistReducer(persistConfig, reducers);
+console.log(persistedState, "WHJAT")
+const composedEnhancers = composeWithDevTools();
 
-export default configureStore({
-  reducer: persistedReducer,
-  middleware: getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
+
+const store = configureStore({
+  reducer: reducers,
+  preloadedState: persistedState,
+  composedEnhancers,
 });
+
+store.subscribe(
+  throttle(() => {
+    savePersistedState({
+      user: store.getState().user,
+    });
+  }, 1000)
+);
+
+export default store;

@@ -30,7 +30,7 @@ export default function LoginForm() {
   
   useEffect(() => {
     if (data) {
-      dispatch(loginUser({ user: data.login.user }))
+      dispatch(loginUser({ ...data.login.user }))
       window.localStorage.setItem("token", data.login.jwt)
     }
   },[data, dispatch])

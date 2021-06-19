@@ -4,24 +4,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { ApolloProvider } from "@apollo/client";
 import { client } from './apollo/index'
 import { Provider } from "react-redux";
-import { PersistGate } from 'redux-persist/integration/react';
-import { persistStore } from 'redux-persist';
 import store from "./redux/store";
 import "./sass/index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-let persistor = persistStore(store);
-
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
       <Router>
         <App />
       </Router>
-      </PersistGate>
     </Provider>
     </ApolloProvider>
   </React.StrictMode>,
