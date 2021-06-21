@@ -14,3 +14,4 @@ export default function OrganizationItem({ id, name, milestones }) {
     </LinkContainer>
   );
 }
+
