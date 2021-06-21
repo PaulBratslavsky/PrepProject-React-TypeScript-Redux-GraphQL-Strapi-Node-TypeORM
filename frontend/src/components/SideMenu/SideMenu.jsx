@@ -1,17 +1,17 @@
 import UserAvatar from "../UserAvatar/UserAvatar";
-import List from "../List/Organizations";
-import GetOrganizationByUser from "../../hooks/getOrganizationByUser";
+import Organizations from "../Organizations/Organizations";
+import GetOrganizationsByUser from "../../hooks/getOrganizationsByUser";
 import { Spinner } from "react-bootstrap";
 
 export default function SideMenu() {
-  const { loading, error, data } =  GetOrganizationByUser();
+  const { loading, error, data } =  GetOrganizationsByUser();
 
   if (loading) return <Spinner animation="grow" variant="primary" />
   if (error) return <p>error</p>
   return (
     <div>
       <UserAvatar showName user={data.user} />
-      <List listItems={data.user.organizations} />
+      <Organizations listItems={data.user.organizations} />
     </div>
   );
 }
