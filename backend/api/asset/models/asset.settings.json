@@ -27,6 +27,7 @@
     "milestones": {
       "via": "asset",
       "collection": "milestone"
+
     }
   }
 }

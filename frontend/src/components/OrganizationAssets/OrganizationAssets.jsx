@@ -1,3 +1,4 @@
+
 import { Switch, Route, useRouteMatch, useParams } from "react-router-dom";
 import { Col, Row, Spinner } from "react-bootstrap";
 import GetOrganizationById from "../../hooks/getOrganizationById";
@@ -7,13 +8,13 @@ import OrganizationHeader from "../OrganizationHeader/OrganizationHeader";
 export default function OrganizationAssets() {
   const { id } = useParams();
   const { path } = useRouteMatch();
-
   const { loading, error, data } = GetOrganizationById(id);
 
   if (loading) return <Spinner animation="grow" variant="primary" />;
   if (error) return <p>error</p>;
 
   console.log(loading, error, data);
+
   return (
     <div>
       <Row>
@@ -38,6 +39,7 @@ export default function OrganizationAssets() {
           </Switch>
         </Col>
       </Row>
+
     </div>
   );
 }
