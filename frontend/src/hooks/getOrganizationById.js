@@ -11,6 +11,11 @@ import { gql, useQuery } from "@apollo/client";
       name
       description
     }
+    users {
+      firstName
+      lastName
+      id
+    }
   }
 }
 `;
