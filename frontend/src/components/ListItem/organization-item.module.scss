@@ -1,0 +1,16 @@
+@import "../../sass/variables.scss";
+
+.organizationItem {
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    background: $light;
+    color: $dark;
+  }
+}
+
+.itemContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}

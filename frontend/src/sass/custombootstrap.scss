@@ -1,9 +1,11 @@
+@import './variables.scss';
+
 /* make the customizations */
 $theme-colors: (
-  "primary": #e93b81,
-  "secondary": #00798c,
-  "danger": #cd162a,
-  "warning": #fca311,
-  "light": #fef9ef,
-  "dark": #222121,
+  "primary": $primary,
+  "secondary": $secondary,
+  "danger": $danger,
+  "warning": $warning,
+  "light": $light,
+  "dark": $dark,
 );
