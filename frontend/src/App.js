@@ -16,7 +16,7 @@ const PrivateRoute = ({
   />
 );
 
-function App() {
+function  App() {
   const user = useSelector((state) => state.user)
 return (
     <div className="app">
@@ -24,7 +24,7 @@ return (
           <Route path="/login">
             <Login />
           </Route>
-          <PrivateRoute exact path="/" user={user}>
+          <PrivateRoute path="/" user={user}>
             <Main />
           </PrivateRoute>
         </Switch>
