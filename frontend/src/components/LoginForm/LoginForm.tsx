@@ -4,7 +4,7 @@ import { gql, useMutation } from "@apollo/client";
 import { useDispatch } from 'react-redux';
 import { loginUser } from "../../redux/slice/userSlice";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Spinner } from "react-bootstrap";
 import styles from "./login-form.module.scss";
 
 const LOGIN_USER = gql`
@@ -49,7 +49,7 @@ export default function LoginForm() {
     reset({username: '', password: ''}); 
   };
 
-  if (loading) return <p>...loading</p>
+  if (loading) return <Spinner animation="grow" variant="primary" />;
   if (data) return <Redirect to="/" />
 
   return (

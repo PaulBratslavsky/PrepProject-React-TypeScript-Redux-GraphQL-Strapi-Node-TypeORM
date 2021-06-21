@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Row, Col, Spinner } from "react-bootstrap";
+import { Container, Col, Spinner } from "react-bootstrap";
 import GetOrganizationById from "../../hooks/getOrganizationById";
 import AssetsList from "../AssetList/AssetList";
 
@@ -14,18 +14,29 @@ export default function OrganizationAssets() {
   console.log(loading, error, data);
   console.log(data.organization.assets);
   return (
-    <Row>
-      <Col xl={4} lg={6} md={12}>
-        <div>
-          <h2>
-            {data.organization.name}{" "}
-            <span className="text-secondary">
-              Asset{data.organization.assets.length > 1 ? "s" : ""}
+    <div>
+      <header className="d-flex justify-content-between align-items-center px-3 pb-3">
+        <h2>
+          {data.organization.name}{" "}
+          <span className="text-secondary">
+            Asset{data.organization.assets.length > 1 ? "s" : ""} (
+            <span className="text-light">
+              {data.organization.assets.length}
             </span>
-          </h2>
-        </div>
+            )
+          </span>{" "}
+        </h2>
+        <h2>
+          <span className="text-warning">
+            Members (
+            <span className="text-light">{data.organization.users.length}</span>
+            )
+          </span>
+        </h2>
+      </header>
+      <Col xl={4} lg={6} md={12}>
         <AssetsList listItems={data.organization.assets} />
       </Col>
-    </Row>
+    </div>
   );
 }

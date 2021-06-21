@@ -4,6 +4,8 @@
   margin: 0;
   padding: 2rem;
   justify-content: center;
+  text-align: center;
+  flex-direction: column;
 
   h2 {
     margin-top: 20px;
@@ -14,6 +16,9 @@
   img {
     border-radius: 50%;
     border: 2px solid $light;
-    width: 100%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    align-self: center;
   }
 }

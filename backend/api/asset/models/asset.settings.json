@@ -21,8 +21,8 @@
       "required": false
     },
     "organization": {
-      "model": "organization",
-      "via": "assets"
+      "via": "assets",
+      "model": "organization"
     }
   }
 }
