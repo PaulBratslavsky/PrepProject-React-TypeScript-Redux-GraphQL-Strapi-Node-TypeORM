@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "milestones",
+  "info": {
+    "name": "Milestone"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "completed": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "dueData": {
+      "type": "date"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "asset": {
+      "model": "asset",
+      "via": "milestones"
+    }
+  }
+}
