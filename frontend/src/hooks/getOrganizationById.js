@@ -1,23 +1,27 @@
 import { gql, useQuery } from "@apollo/client";
 
- const ORGANIZATION_BY_ID = gql`
-   query GetOrganizationById($input:ID!) {
-	organization(id: $input) {
-  	id
-    name
-    description
-    assets {
+const ORGANIZATION_BY_ID = gql`
+  query GetOrganizationById($input: ID!) {
+    organization(id: $input) {
       id
       name
       description
-    }
-    users {
-      firstName
-      lastName
-      id
+      assets {
+        id
+        name
+        description
+        milestones {
+          name
+          id
+        }
+      }
+      members {
+        firstName
+        lastName
+        id
+      }
     }
   }
-}
 `;
 
 export default function GetOrganizationById(id) {
