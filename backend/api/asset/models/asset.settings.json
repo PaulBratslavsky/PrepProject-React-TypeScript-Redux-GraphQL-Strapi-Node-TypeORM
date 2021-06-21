@@ -23,6 +23,10 @@
     "organization": {
       "via": "assets",
       "model": "organization"
+    },
+    "milestones": {
+      "via": "asset",
+      "collection": "milestone"
     }
   }
 }

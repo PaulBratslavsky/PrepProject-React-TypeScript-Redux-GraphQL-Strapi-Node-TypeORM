@@ -9,7 +9,7 @@ export default function Organization() {
         <Route exact path={path}>
           <h2>Please select an organization.</h2>
         </Route>
-        <Route path={`${path}/:id`}>
+        <Route path={`${path}/:id/assets`}>
           <OrganizationAssets />
         </Route> 
       </Switch>
