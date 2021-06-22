@@ -6,9 +6,6 @@ export default function Organization() {
   return (
     <div>
       <Switch>
-        <Route exact path={path}>
-          <h2>Please select an organization.</h2>
-        </Route>
         <Route path={`${path}/:id/assets`}>
           <OrganizationAssets />
         </Route> 

@@ -1,8 +1,9 @@
 import { Switch, Route, useRouteMatch, useParams } from "react-router-dom";
-import { Col, Row, Spinner } from "react-bootstrap";
+import { Container, Col, Row, Spinner } from "react-bootstrap";
 import GetOrganizationById from "../../hooks/getOrganizationById";
 import AssetsList from "../AssetList/AssetList";
-import OrganizationHeader from "../OrganizationHeader/OrganizationHeader";
+import AssetMilestones from "../AssetMilestones/AssetMilestones";
+// import StepsTable from "../Table/Table";
 
 export default function OrganizationAssets() {
   const { id } = useParams();
@@ -18,25 +19,30 @@ export default function OrganizationAssets() {
     <div>
       <Row>
         <Col xl={4} lg={6} md={12}>
-        <h2 style={{fontSize: "1.6rem"}} className="mb-3">
-          {data.organization.name}{" "}
-          <span className="text-secondary">
-            Asset{data.organization.assets.length > 1 ? "s" : ""} (
-            <span className="text-light">
-              {data.organization.assets.length}
-            </span>
-            )
-          </span>{" "}
-        </h2>
+          <h2 style={{ fontSize: "1.6rem" }} className="mb-3">
+            {data.organization.name}{" "}
+            <span className="text-secondary">
+              Asset{data.organization.assets.length > 1 ? "s" : ""} (
+              <span className="text-light">
+                {data.organization.assets.length}
+              </span>
+              )
+            </span>{" "}
+          </h2>
           <AssetsList listItems={data.organization.assets} />
         </Col>
         <Col xl={8} lg={6} md={12}>
           <Switch>
-          <Route path={`${path}/:id/milestones`}>
-            <p>create milestone section</p>
-          </Route> 
+            <Route path={`${path}/:assetId/milestones`}>
+              <AssetMilestones />
+            </Route>
           </Switch>
         </Col>
+      </Row>
+      <Row>
+        <Container>
+          {/* <StepsTable /> */}
+        </Container>
       </Row>
     </div>
   );
