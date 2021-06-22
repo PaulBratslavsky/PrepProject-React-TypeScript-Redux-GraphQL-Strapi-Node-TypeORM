@@ -1,3 +1,11 @@
+body {
+  color: #e4e4e4;
+}
+
+.scroll {
+  overflow: scroll;
+}
+
 .main {
   height: calc(100vh - 56px);
 }
