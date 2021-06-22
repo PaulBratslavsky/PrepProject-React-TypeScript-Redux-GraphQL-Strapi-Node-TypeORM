@@ -17,4 +17,21 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
+
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    background: $warning;
+    color: $dark;
+  }
+
+  // TODO: fix this to work without using !important flag
+  &:hover span {
+    color: $dark !important; 
+  }
+
+  span {
+    transition: color 0.5s ease-in-out;
+    color: $text-color;
+  }
 }
+

@@ -10,7 +10,6 @@ const MILESTONES_BY_ASSET_ID = gql`
 `;
 
 export default function GetMilestonesByAssetId(id) {
-  console.log(id, "<====== assetID ")
   const query = useQuery(MILESTONES_BY_ASSET_ID, {
     variables: { input: id },
   });

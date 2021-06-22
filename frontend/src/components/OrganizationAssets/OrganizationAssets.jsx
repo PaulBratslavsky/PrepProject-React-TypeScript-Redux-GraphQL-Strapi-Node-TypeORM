@@ -3,22 +3,24 @@ import { Container, Col, Row, Spinner } from "react-bootstrap";
 import GetOrganizationById from "../../hooks/getOrganizationById";
 import AssetsList from "../AssetList/AssetList";
 import AssetMilestones from "../AssetMilestones/AssetMilestones";
-// import StepsTable from "../Table/Table";
+import StepsTable from "../Table/Table";
+import styles from "./organization-assets.module.scss";
 
 export default function OrganizationAssets() {
-  const { id } = useParams();
+  const params = useParams();
   const { path } = useRouteMatch();
 
-  const { loading, error, data } = GetOrganizationById(id);
+  console.log(params, path, "hello")
+
+  const { loading, error, data } = GetOrganizationById(params.organizationId);
 
   if (loading) return <Spinner animation="grow" variant="primary" />;
   if (error) return <p>error</p>;
 
-  console.log(loading, error, data);
   return (
-    <div>
-      <Row>
-        <Col xl={4} lg={6} md={12}>
+    <Container fluid className={styles.organizationGrid}>
+      <Row className={styles.scroll}>
+        <Col xl={4} lg={6} md={12} className="my-3">
           <h2 style={{ fontSize: "1.6rem" }} className="mb-3">
             {data.organization.name}{" "}
             <span className="text-secondary">
@@ -31,19 +33,23 @@ export default function OrganizationAssets() {
           </h2>
           <AssetsList listItems={data.organization.assets} />
         </Col>
-        <Col xl={8} lg={6} md={12}>
+        <Col xl={8} lg={6} md={12} className="my-3">
           <Switch>
-            <Route path={`${path}/:assetId/milestones`}>
+            <Route path={`${path}/:assetId/milestones/`}>
               <AssetMilestones />
             </Route>
           </Switch>
         </Col>
       </Row>
-      <Row>
-        <Container>
-          {/* <StepsTable /> */}
+      <Row className={styles.scroll}>
+        <Container fluid>
+          <Switch>
+            <Route path={`${path}/:assetId/milestones/:stepsId/steps`}>
+              <StepsTable />
+            </Route>
+          </Switch>
         </Container>
       </Row>
-    </div>
+    </Container>
   );
 }

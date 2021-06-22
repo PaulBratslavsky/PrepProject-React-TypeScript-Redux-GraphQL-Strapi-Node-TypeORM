@@ -9,6 +9,10 @@ const ASSET_BY_ID = gql`
       milestones {
         id
         name
+        steps {
+          id
+          name
+        }
       }
     }
   }
