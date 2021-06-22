@@ -11,10 +11,7 @@ const reducers = combineReducers({
 });
 
 const persistedState = loadPersistedState();
-
-console.log(persistedState, "WHJAT")
 const composedEnhancers = composeWithDevTools();
-
 
 const store = configureStore({
   reducer: reducers,

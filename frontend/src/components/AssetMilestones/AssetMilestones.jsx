@@ -1,16 +1,18 @@
-import { useParams } from "react-router-dom";
+import { useParams, Switch, Route, useRouteMatch } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import GetAssetById from "../../hooks/getAssetById";
 import MilestoneList from "../MilestoneList/MilestoneList";
+import StepsTable from "../StepsTable/StepsTable";
 
 export default function AssetMilestones() {
-  const { assetId } = useParams();
-  const { loading, error, data } = GetAssetById(assetId);
+  const params = useParams();
+  const { path } = useRouteMatch()
+  console.log( params, "use params")
+  const { loading, error, data } = GetAssetById(params.assetId);
 
   if (loading) return <Spinner animation="grow" variant="primary" />;
   if (error) return <p>error</p>;
 
-  console.log(loading, error, data);
   return (
     <div>
       <h2 style={{fontSize: "1.6rem"}} className="mb-3">
@@ -21,9 +23,14 @@ export default function AssetMilestones() {
               {data.asset.milestones.length}
             </span>
             )
-          </span>{" "}
+          </span>
         </h2>
       <MilestoneList listItems={data.asset.milestones} />
+      <Switch>
+            <Route path={`${path}:stepsId/steps`}>
+              <StepsTable />
+            </Route>
+          </Switch>
     </div>
   )
 }

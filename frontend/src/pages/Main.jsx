@@ -17,13 +17,14 @@ export default function Main() {
             </div>
           </Col>
           <Col xl={10} lg={9} md={8} className="p-0">
-            <div className="m-3 p-1">
               <Switch>
                 <Route path='/organization'>
                   <Organization />
                 </Route>
+                <Route path='/other'>
+                  <h1>other</h1>
+                </Route>
               </Switch>
-            </div>
           </Col>
         </Row>
       </Container>

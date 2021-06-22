@@ -1,0 +1,24 @@
+.tableStyles {
+  display: table;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  border-spacing: 1px;
+  margin-bottom: 1.5rem;
+  
+  thead {
+    vertical-align: middle;
+    color: #adb5bd;
+  }
+  
+  td, th {
+    padding: .85rem;
+    white-space: nowrap;
+  }
+  
+  tr {
+    display: table-row;
+    vertical-align: bottom;
+    border-bottom: 2px solid #3a4250;
+  } 
+}

@@ -4,12 +4,10 @@ import OrganizationAssets from "../OrganizationAssets/OrganizationAssets";
 export default function Organization() {
   const { path } = useRouteMatch()
   return (
-    <div>
       <Switch>
-        <Route path={`${path}/:id/assets`}>
+        <Route path={`${path}/:organizationId/assets`}>
           <OrganizationAssets />
         </Route> 
       </Switch>
-    </div>
   )
 }
