@@ -1,11 +1,12 @@
-import { Route, useRouteMatch } from "react-router-dom";
+import { Route, useRouteMatch, useHistory } from "react-router-dom";
 import OrganizationAssets from "../OrganizationAssets/OrganizationAssets";
 import AssetMilestones from "../AssetMilestones/AssetMilestones";
 import StepsTable from "../StepsTable/StepsTable";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 export default function Organization() {
   const { path } = useRouteMatch();
+  const history = useHistory();
   return (
     <Container fluid className="h-100">
       <Row className="h-50 scroll">
@@ -23,9 +24,12 @@ export default function Organization() {
       <Row className="h-50 scroll bg-dark">
         <Col xl={12} className="my-3">
           <Route
-            path={`${path}/:organizationId/assets/:assetId/milestones/:stepsId/steps`}
+            exact path={`${path}/:organizationId/assets/:assetId/milestones/:stepsId/steps`}
           >
             <StepsTable />
+          </Route>
+          <Route path={`${path}/:organizationId/assets/:assetId/milestones/:stepsId/steps/:taskId/taskquicklook`}>
+            <h1>task quick look</h1> <Button variant="warning" onClick={() => history.goBack()}>Back</Button>
           </Route>
         </Col>
       </Row>

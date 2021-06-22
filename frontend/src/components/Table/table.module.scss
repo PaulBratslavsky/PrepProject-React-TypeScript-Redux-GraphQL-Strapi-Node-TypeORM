@@ -1,3 +1,5 @@
+@import "../../sass/variables.scss";
+
 .tableStyles {
   display: table;
   width: 100%;
@@ -8,18 +10,38 @@
   
   thead {
     vertical-align: middle;
-    color: #adb5bd;
+    border-bottom: 2px solid #afacac;
+
+
+    th {
+      color: $secondary;
+      border: none;
+    }
   }
   
-  td, th {
+  td {
     padding: .85rem;
     white-space: nowrap;
-    color: #adb5bd;
+    color: $text-color;
+    border: none;
+    border-bottom: 1px solid #505050;
   }
   
-  tr {
+  tbody > tr {
     display: table-row;
     vertical-align: bottom;
-    border-bottom: 2px solid #3a4250;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      background: $warning;
+      td { color: $dark; }
+      cursor: pointer;
+    }
+
+    &:active {
+      background: $light;
+      td { color: $dark; }
+      cursor: pointer;
+    }
   } 
 }

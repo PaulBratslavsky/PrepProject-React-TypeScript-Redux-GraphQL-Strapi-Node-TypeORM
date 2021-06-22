@@ -14,6 +14,7 @@ const STEPS_BY_MILESTONE_ID = gql`
 `;
 
 export default function GetMilestonesByAssetId(id) {
+  console.log(id, "hhhhhh")
   const query = useQuery(STEPS_BY_MILESTONE_ID, {
     variables: { input: id },
   });
