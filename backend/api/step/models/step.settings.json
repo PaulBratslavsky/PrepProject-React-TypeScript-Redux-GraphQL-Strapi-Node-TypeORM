@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "steps",
   "info": {
-    "name": "Step"
+    "name": "Step",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -15,7 +16,8 @@
       "type": "enumeration",
       "enum": [
         "step",
-        "bug"
+        "bug",
+        "blocker"
       ]
     },
     "name": {

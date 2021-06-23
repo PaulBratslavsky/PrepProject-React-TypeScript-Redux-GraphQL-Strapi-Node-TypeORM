@@ -1,31 +1,10 @@
 import { useSelector } from "react-redux";
-import { gql, useQuery } from "@apollo/client";
-
-const ORGANIZATIONS_BY_USER = gql`
-  query GetOrganizationsByUser($input: ID!) {
-    user(id: $input) {
-      firstName
-      lastName
-      avatar {
-        url
-      }
-      organizations {
-        name
-        description
-        id
-        assets {
-          id
-          name
-          description
-        }
-      }
-    }
-  }
-`;
+import { useQuery } from "@apollo/client";
+import { GET_ORGANIZATIONS_BY_USER_ID } from '../apollo/quiries'
 
 export default function GetOrganizationByUser() {
   const userId = useSelector((state) => state.user.id);
-  const query = useQuery(ORGANIZATIONS_BY_USER, {
+  const query = useQuery(GET_ORGANIZATIONS_BY_USER_ID , {
     variables: { input: userId },
   });
 

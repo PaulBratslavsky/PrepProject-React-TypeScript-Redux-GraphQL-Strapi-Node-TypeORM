@@ -1,11 +1,15 @@
-import { useParams, Switch, Route, useRouteMatch } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
-import GetAssetById from "../../hooks/getAssetById";
+import { useQuery } from "@apollo/client";
+import { GET_ASSET_BY_ID } from "../../apollo/quiries";
 import MilestoneList from "../MilestoneList/MilestoneList";
 
 export default function AssetMilestones() {
-  const params = useParams();
-  const { loading, error, data } = GetAssetById(params.assetId);
+  const { assetId } = useParams();
+
+  const { loading, error, data }  = useQuery(GET_ASSET_BY_ID, {
+    variables: { input: assetId },
+  });
 
   if (loading) return <Spinner animation="grow" variant="primary" />;
   if (error) return <p>error</p>;

@@ -1,12 +1,15 @@
 import { useParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
-import GetOrganizationById from "../../hooks/getOrganizationById";
+import { useQuery } from "@apollo/client";
+import { GET_ORGANIZATION_BY_ID } from "../../apollo/quiries";
 import AssetsList from "../AssetList/AssetList";
-
 
 export default function OrganizationAssets() {
   const params = useParams();
-  const { loading, error, data } = GetOrganizationById(params.organizationId);
+
+  const { loading, error, data }  = useQuery(GET_ORGANIZATION_BY_ID, {
+    variables: { input: params.organizationId },
+  });
 
   if (loading) return <Spinner animation="grow" variant="primary" />;
   if (error) return <p>error</p>;
