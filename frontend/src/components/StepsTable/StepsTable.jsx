@@ -9,6 +9,7 @@ import ModalHeader from "../ModalContainer/ModalHeader";
 import ModalContainer from "../ModalContainer/ModalContainer";
 import AddTaskForm from "../AddTaskForm/AddTaskForm";
 import { useSelector } from "react-redux";
+import AgGrid from "../AgGrid/AgGrid";
 
 
 export default function StepsTable({setRefresh}) {
@@ -35,17 +36,7 @@ export default function StepsTable({setRefresh}) {
     <Fragment>
   
       <ModalHeader onClick={setIsOpen} name={data.milestone.name}/>
-      <Table sourceData={data.milestone.steps}>
-        <TableColumn source="name" label="name" />
-        <TableColumn source="type" label="type" />
-        <TableColumn
-          source="completed"
-          label="completed"
-          render={(data) => (
-            <span className="text-warning">{data ? "Yes" : "No"}</span>
-          )}
-        />
-      </Table>
+      <AgGrid rowData={data.milestone.steps} />
       <ModalContainer
         isOpen={isOpen}
         handleClose={handleClose}
