@@ -1,14 +1,27 @@
-import { gql } from '@apollo/client'
+import { gql } from "@apollo/client";
 
 export const GET_STEPS_BY_MILESTONE_ID = gql`
   query GetStepsByMilestoneId($input: ID!) {
     steps(where: { milestone: $input }) {
       id
       name
-      dueDate
       type
       completed
-      created_at
+    }
+  }
+`;
+
+export const GET_MILESTONE_BY_MILESTONE_ID = gql`
+  query GetMilestoneByMilestoneId($input: ID!) {
+    milestone(id: $input) {
+      id
+      name
+      steps {
+        id
+        name
+        type
+        completed
+      }
     }
   }
 `;

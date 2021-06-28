@@ -31,9 +31,6 @@
       "type": "boolean",
       "default": false
     },
-    "dueDate": {
-      "type": "date"
-    },
     "milestone": {
       "model": "milestone",
       "via": "steps"
