@@ -1,0 +1,62 @@
+@import "./variables.scss";
+@import "~ag-grid-community/src/styles/ag-grid.scss";
+@import "~ag-grid-community/src/styles/ag-theme-alpine-dark/sass/ag-theme-alpine-dark-mixin";
+
+.tableStyles{
+    @include ag-theme-alpine-dark((
+        // use theme parameters where possible
+        alpine-active-color: #e93b81
+    ));
+
+
+    .ag-header {
+        // or write CSS selectors to make customisations beyond what the parameters support
+        background-color: $dark;
+        --ag-foreground-color: #fca311;
+    }
+}
+// .tableStyles {
+//   display: table;
+//   width: 100%;
+//   text-align: left;
+//   border-collapse: collapse;
+//   border-spacing: 1px;
+//   margin-bottom: 1.5rem;
+  
+//   thead {
+//     vertical-align: middle;
+//     border-bottom: 2px solid #afacac;
+
+
+//     th {
+//       color: $secondary;
+//       border: none;
+//     }
+//   }
+  
+//   td {
+//     padding: .85rem;
+//     white-space: nowrap;
+//     color: $text-color;
+//     border: none;
+//     border-bottom: 1px solid #505050;
+//   }
+  
+//   tbody > tr {
+//     display: table-row;
+//     vertical-align: bottom;
+//     transition: all 0.5s ease-in-out;
+
+//     &:hover {
+//       background: $warning;
+//       td { color: $dark; }
+//       cursor: pointer;
+//     }
+
+//     &:active {
+//       background: $light;
+//       td { color: $dark; }
+//       cursor: pointer;
+//     }
+//   } 
+// }
