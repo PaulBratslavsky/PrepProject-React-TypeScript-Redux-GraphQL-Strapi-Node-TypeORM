@@ -1,6 +1,4 @@
 import { useState, Fragment } from "react";
-import Table from "../Table/Table";
-import TableColumn from "../Table/TableColumn";
 import { useQuery } from "@apollo/client";
 import { GET_MILESTONE_BY_MILESTONE_ID } from "../../apollo/quiries";
 import { useParams } from "react-router-dom";

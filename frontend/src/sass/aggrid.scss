@@ -4,17 +4,39 @@
 
 .tableStyles{
     @include ag-theme-alpine-dark((
-        // use theme parameters where possible
-        alpine-active-color: #e93b81
+        alpine-active-color: #e93b81,
+        // row-border-color: #fca311,
     ));
 
+    .ag-root-wrapper {
+        border: none;
+    }
 
     .ag-header {
         // or write CSS selectors to make customisations beyond what the parameters support
         background-color: $dark;
-        --ag-foreground-color: #fca311;
+        border-bottom: solid 2px grey;
+        --ag-foreground-color: #0da4bc;
+    }
+
+    .ag-cell {
+        color: #e4e4e4;
     }
 }
+
+/* 
+
+@include ag-theme-alpine((
+    odd-row-background-color: #f5f5f5,
+    row-border-color: transparent,
+    row-hover-color: null,
+    checkbox-checked-color: #2661ad,
+    range-selection-border-color: #ff00b1,
+    range-selection-background-color: #03305633,
+    header-height: 80px
+  ));
+
+  */
 // .tableStyles {
 //   display: table;
 //   width: 100%;
