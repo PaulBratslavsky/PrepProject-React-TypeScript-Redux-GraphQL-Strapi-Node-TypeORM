@@ -1,9 +1,10 @@
-import { Redirect } from "react-router";
+// import { Redirect } from "react-router";
 import { useMutation } from "@apollo/client";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { Form, Button, Spinner } from "react-bootstrap";
 import styles from "./add-task-form.module.scss";
-import { POST_CREATE_STEP } from "../../apollo/mutations"
+import { POST_CREATE_STEP } from "../../apollo/mutations";
+import { GET_MILESTONE_BY_MILESTONE_ID } from "../../apollo/quiries";
 
 interface IFormInput {
   type: string;
@@ -19,8 +20,15 @@ interface IAddTaskForm {
   userId: string;
 }
 
-export default function AddTaskForm({milestoneId, userId}: IAddTaskForm) {
-  const [CreateStep, { data, error, loading }] = useMutation(POST_CREATE_STEP);
+export default function AddTaskForm({ milestoneId, userId }: IAddTaskForm) {
+  const [CreateStep, { data, error, loading }] = useMutation(POST_CREATE_STEP, {
+    refetchQueries: [
+      {
+        query: GET_MILESTONE_BY_MILESTONE_ID,
+        variables: { input: milestoneId }, 
+      },
+    ],
+  });
 
   const {
     control,
@@ -33,18 +41,17 @@ export default function AddTaskForm({milestoneId, userId}: IAddTaskForm) {
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     CreateStep({
       variables: {
-            type: data.type,
-            name: data.name,
-            description: data.description,
-            completed: false,
-            milestone: milestoneId,
-            created_by: userId,
-          }
+        type: data.type,
+        name: data.name,
+        description: data.description,
+        completed: false,
+        milestone: milestoneId,
+        created_by: userId,
+      },
     });
     reset({ name: "", description: "" });
-    console.log(data)
-    alert("form submitted")
-
+    console.log(data);
+    alert("form submitted");
   };
 
   if (loading) return <Spinner animation="grow" variant="primary" />;

@@ -11,7 +11,7 @@ import AddTaskForm from "../AddTaskForm/AddTaskForm";
 import { useSelector } from "react-redux";
 
 
-export default function StepsTable() {
+export default function StepsTable({setRefresh}) {
   const { stepsId } = useParams();
   const userId = useSelector((state) => state.user.id);
 
@@ -51,7 +51,7 @@ export default function StepsTable() {
         handleClose={handleClose}
         heading="Add New Task"
       >
-        <AddTaskForm milestoneId={data.milestone.id} userId={userId}/>
+        <AddTaskForm milestoneId={data.milestone.id} userId={userId} setRefresh={setRefresh}/>
       </ModalContainer>
     </Fragment>
   );
