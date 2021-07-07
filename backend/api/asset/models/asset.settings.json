@@ -27,6 +27,11 @@
     "milestones": {
       "via": "asset",
       "collection": "milestone"
+    },
+    "user": {
+      "via": "assets",
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }

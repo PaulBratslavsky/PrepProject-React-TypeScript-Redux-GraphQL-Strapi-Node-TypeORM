@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Route, useRouteMatch, useHistory } from "react-router-dom";
 import OrganizationAssets from "../OrganizationAssets/OrganizationAssets";
 import AssetMilestones from "../AssetMilestones/AssetMilestones";
@@ -8,8 +7,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 export default function Organization() {
   const { path } = useRouteMatch();
   const history = useHistory();
-  const [refresh, setRefresh] = useState(-1)
-  console.log(refresh, "hello refresh")
+
   return (
     <Container fluid className="h-100">
       <Row className="h-50 scroll">
@@ -29,7 +27,7 @@ export default function Organization() {
           <Route
             exact
             path={`${path}/:organizationId/assets/:assetId/milestones/:stepsId/steps`}
-          > <StepsTable setRefresh={setRefresh} />
+          > <StepsTable />
            
           </Route>
           <Route

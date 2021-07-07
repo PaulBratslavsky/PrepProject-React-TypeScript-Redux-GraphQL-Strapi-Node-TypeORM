@@ -78,6 +78,10 @@
     "organizations": {
       "via": "members",
       "collection": "organization"
+    },
+    "assets": {
+      "collection": "asset",
+      "via": "user"
     }
   }
 }

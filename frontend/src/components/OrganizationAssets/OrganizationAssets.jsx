@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import { useQuery } from "@apollo/client";
-import { GET_ORGANIZATION_BY_ID } from "../../apollo/quiries";
+import { GET_ORGANIZATION } from "../../apollo/quiries/getOrganization";
 import AssetsList from "../AssetList/AssetList";
 
 export default function OrganizationAssets() {
   const params = useParams();
 
-  const { loading, error, data }  = useQuery(GET_ORGANIZATION_BY_ID, {
+  const { loading, error, data }  = useQuery(GET_ORGANIZATION, {
     variables: { input: params.organizationId },
   });
 

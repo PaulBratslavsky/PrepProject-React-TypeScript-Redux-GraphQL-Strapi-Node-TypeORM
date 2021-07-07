@@ -2,26 +2,41 @@
 @import "~ag-grid-community/src/styles/ag-grid.scss";
 @import "~ag-grid-community/src/styles/ag-theme-alpine-dark/sass/ag-theme-alpine-dark-mixin";
 
-.tableStyles{
-    @include ag-theme-alpine-dark((
-        alpine-active-color: #e93b81,
-        // row-border-color: #fca311,
-    ));
+.tableStyles {
+  @include ag-theme-alpine-dark();
 
-    .ag-root-wrapper {
-        border: none;
-    }
+  .ag-root-wrapper {
+    border: none;
+  }
 
-    .ag-header {
-        // or write CSS selectors to make customisations beyond what the parameters support
-        background-color: $dark;
-        border-bottom: solid 2px grey;
-        --ag-foreground-color: #0da4bc;
-    }
+  .ag-root-wrapper-body {
+    background: $bg-dark;
+  }
 
-    .ag-cell {
-        color: #e4e4e4;
-    }
+  .ag-header {
+    // or write CSS selectors to make customisations beyond what the parameters support
+    background-color: $dark;
+    border-bottom: solid 2px grey;
+    --ag-foreground-color: #0da4bc;
+  }
+
+  .ag-row {
+    background: $dark;
+    border: none;
+  }
+
+  .ag-row:hover {
+    background: $primary;
+  }
+
+  .ag-row-even {
+    background: $bg-dark;
+    
+  }
+
+  .ag-cell {
+    color: $text-color;
+  }
 }
 
 /* 
@@ -44,18 +59,17 @@
 //   border-collapse: collapse;
 //   border-spacing: 1px;
 //   margin-bottom: 1.5rem;
-  
+
 //   thead {
 //     vertical-align: middle;
 //     border-bottom: 2px solid #afacac;
-
 
 //     th {
 //       color: $secondary;
 //       border: none;
 //     }
 //   }
-  
+
 //   td {
 //     padding: .85rem;
 //     white-space: nowrap;
@@ -63,7 +77,7 @@
 //     border: none;
 //     border-bottom: 1px solid #505050;
 //   }
-  
+
 //   tbody > tr {
 //     display: table-row;
 //     vertical-align: bottom;
@@ -80,5 +94,5 @@
 //       td { color: $dark; }
 //       cursor: pointer;
 //     }
-//   } 
+//   }
 // }
