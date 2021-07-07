@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
-export const GET_ORGANIZATION_BY_ID = gql`
-  query GetOrganizationById($input: ID!) {
+export const GET_ORGANIZATION = gql`
+  query GetOrganization($input: ID!) {
     organization(id: $input) {
       id
       name
@@ -14,11 +14,6 @@ export const GET_ORGANIZATION_BY_ID = gql`
           name
           id
         }
-      }
-      members {
-        firstName
-        lastName
-        id
       }
     }
   }

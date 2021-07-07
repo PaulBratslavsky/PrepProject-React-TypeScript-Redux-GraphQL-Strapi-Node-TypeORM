@@ -20,9 +20,9 @@
       "type": "text"
     },
     "members": {
+      "via": "organizations",
       "plugin": "users-permissions",
       "collection": "user",
-      "via": "organizations",
       "dominant": true
     },
     "teams": {

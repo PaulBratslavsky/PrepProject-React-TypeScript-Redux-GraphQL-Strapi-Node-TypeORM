@@ -21,6 +21,7 @@ interface IAddTaskForm {
 }
 
 export default function AddTaskForm({ milestoneId, userId }: IAddTaskForm) {
+  console.log(milestoneId, "Is this missing")
   const [CreateStep, { data, error, loading }] = useMutation(POST_CREATE_STEP, {
     refetchQueries: [
       {
@@ -50,8 +51,6 @@ export default function AddTaskForm({ milestoneId, userId }: IAddTaskForm) {
       },
     });
     reset({ name: "", description: "" });
-    console.log(data);
-    alert("form submitted");
   };
 
   if (loading) return <Spinner animation="grow" variant="primary" />;
@@ -79,7 +78,6 @@ export default function AddTaskForm({ milestoneId, userId }: IAddTaskForm) {
               {...register("type", { required: true })}
               {...field}
             >
-              <option selected>Select Type</option>
               <option value="step">Step</option>
               <option value="blocker">Blocker</option>
               <option value="bug">Bug</option>

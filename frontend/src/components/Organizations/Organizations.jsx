@@ -1,12 +1,19 @@
 import OrganizationItem from "../OrganizationItem/OrganizationItem";
-import { Nav } from "react-bootstrap";
+import { Nav, Spinner } from "react-bootstrap";
+import { useQuery } from "@apollo/client";
+import { GET_ORGANIZATIONS } from "../../apollo/quiries/getOrganizations";
 
-export default function Organizations({ listItems = [] }) {
+export default function Organizations() {
+  const { loading, error, data } =  useQuery(GET_ORGANIZATIONS);
+
+  if (loading) return <Spinner animation="grow" variant="primary" />
+  if (error) return <p>error</p>
+
   return (
     <div>
-      <h3 className="px-3 text-secondary">Organization{listItems.length > 1 ? "s" : ""}</h3>
+      <h3 className="px-3 text-secondary">Organization{data.organizations.length > 1 ? "s" : ""}</h3>
       <Nav className="flex-column">
-        {listItems.map((item) => (
+        {data.organizations.map((item) => (
           <OrganizationItem key={item.id} {...item} />
         ))}
       </Nav>

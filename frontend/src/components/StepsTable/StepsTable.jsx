@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import AgGrid from "../AgGrid/AgGrid";
 
 
-export default function StepsTable({setRefresh}) {
+export default function StepsTable() {
   const { stepsId } = useParams();
   const userId = useSelector((state) => state.user.id);
 
@@ -19,16 +19,11 @@ export default function StepsTable({setRefresh}) {
   });
 
   const [isOpen, setIsOpen] = useState(false);
-
   const handleClose = () => setIsOpen(false);
-
-  console.log(data, "WHAT");
 
   if (loading) return <Spinner animation="grow" variant="primary" />;
   if (error) return <p>error</p>;
-  if (!data.milestone.steps.length) return null;
-
-  console.log(data.milestone.name);
+  // if (!data.milestone.steps.length) return null;
 
   return (
     <Fragment>
@@ -40,7 +35,7 @@ export default function StepsTable({setRefresh}) {
         handleClose={handleClose}
         heading="Add New Task"
       >
-        <AddTaskForm milestoneId={data.milestone.id} userId={userId} setRefresh={setRefresh}/>
+        <AddTaskForm milestoneId={data.milestone.id} userId={userId} />
       </ModalContainer>
     </Fragment>
   );
