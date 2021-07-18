@@ -18,9 +18,10 @@ interface IFormInput {
 interface IAddTaskForm {
   milestoneId: string;
   userId: string;
+  handleClose: () => undefined;
 }
 
-export default function AddTaskForm({ milestoneId, userId }: IAddTaskForm) {
+export default function AddTaskForm({ milestoneId, userId, handleClose }: IAddTaskForm) {
   console.log(milestoneId, "Is this missing")
   const [CreateStep, { data, error, loading }] = useMutation(POST_CREATE_STEP, {
     refetchQueries: [
@@ -30,6 +31,8 @@ export default function AddTaskForm({ milestoneId, userId }: IAddTaskForm) {
       },
     ],
   });
+
+  console.log(data, "after running a mutation")
 
   const {
     control,
@@ -54,7 +57,7 @@ export default function AddTaskForm({ milestoneId, userId }: IAddTaskForm) {
   };
 
   if (loading) return <Spinner animation="grow" variant="primary" />;
-  // if (data) return <Redirect to="/" />;
+  if (data) handleClose();
   /* 
     TODO 1: Add todo Type Select Box (default to task)
     TODO 2: Add name input field (required )
@@ -66,7 +69,7 @@ export default function AddTaskForm({ milestoneId, userId }: IAddTaskForm) {
   return (
     <Form className={styles.addTaskForm} onSubmit={handleSubmit(onSubmit)}>
       <Form.Group controlId="formBasicEmail">
-        <Form.Label>Task Name</Form.Label>
+        <Form.Label>Task Type</Form.Label>
         <Controller
           name="type"
           control={control}
@@ -85,7 +88,7 @@ export default function AddTaskForm({ milestoneId, userId }: IAddTaskForm) {
           )}
         />
         <Form.Control.Feedback type="invalid">
-          Task Name is Required.
+          Task Type is Required.
         </Form.Control.Feedback>
       </Form.Group>
 
@@ -127,12 +130,12 @@ export default function AddTaskForm({ milestoneId, userId }: IAddTaskForm) {
           )}
         />
         <Form.Control.Feedback type="invalid">
-          Please provide a valid password.
+          Task description is required.
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Row className="mx-0">
         <Button className="ml-auto" variant="primary" type="submit">
-          Login
+          Add Task
         </Button>
         {error && <h4>Server Error: {error?.message}</h4>}
       </Form.Row>
