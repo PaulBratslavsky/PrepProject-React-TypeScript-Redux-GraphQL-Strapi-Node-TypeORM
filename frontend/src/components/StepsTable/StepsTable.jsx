@@ -35,7 +35,7 @@ export default function StepsTable() {
         handleClose={handleClose}
         heading="Add New Task"
       >
-        <AddTaskForm milestoneId={data.milestone.id} userId={userId} />
+        <AddTaskForm milestoneId={data.milestone.id} userId={userId} handleClose={handleClose} />
       </ModalContainer>
     </Fragment>
   );
